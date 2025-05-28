@@ -1,0 +1,256 @@
+What is Data?
+•	Data is a collection of a distinct small unit of information
+•	It can be used in a variety of forms like text, number, media bytes   etc.
+•	It can be stored in pieces of a paper or electronic memory etc. (Word, Excel, …)
+•	Word ‘DATA’ is originated from the word ‘datum’ that mean single piece of information, it is plural of the Greek word datum.
+•	Ex: Name, Department, Designation…
+
+What is Database?
+	A database is an organised collection of data, so that it can be easily accessed and managed.
+	There are many databases available like MySQL, Mongo DB………
+
+What is DBMS?
+	DBMS is a software which is used to manage the database.
+	For example: MySQL, SQL Server, No SQL DBMS like mongo DB, Dynamo DB etc.
+Are a very popular commercial database which is used in different application.
+	DBMS provides an interface to perform various operations like database creation.
+	Storing data in it, updating data, creating a table in the database and a lot more.
+	It provides protection and security to the database. In the case of multiple users, it also maintains data consistency.
+	DBMS allows users the following tasks.
+	Data definition: It is used to creation modification, and removal of definition on that defines the organization, modification, and deletion of the actual data in the databases.
+	USER ADMINISTRATION: It is used for registering and monitoring users, maintain, data integrity, enforcing data security, dealing with concurrency control.
+
+What is RDBMS: All modern database management system like SQL, MS SQL Server, IBM, DB2, oracle, MySQL, and Microsoft access are based on RDBMS because it is based on the relation model.
+DBMS -----> Data stores in Tables.
+RDBMS - Data stores in the format of rows & columns in a table, every column in a table has a name and datatype.
+The datatype is a guideline for SQL to understand what type of data is expected inside of each column, and it also identifies how SQL will interact with the stored data.
+In MySQL there are 3 main datatypes:  string, numeric and date & times.
+
+What is column?
+A column is vertical entity in a table that contains all information associated with a specific field in a table.    
+Column1	Column2	Column3	Column4	Column5	Column6
+
+
+What is row?
+A row is a collection of all information about an entity.
+Each row gives information about different employs in the organization.
+
+
+------------------------------------------------------------------------------------------
+OPEN MYSQL IN COMMAND PROMPT 
+OPEN CMD 
+mysql -u root -p
+
+DO YOU WANT TO SEE THE ALL DATABASES IN YOUR DBSERVER
+SHOW DATABASES;
+
+IF YOU WANT TO CREATE A NEW DATABASE
+
+SY : CREATE DATABASE DATABASE_NAME;
+EX : CREATE DATABASE TIGER;
+ paiyan             |
+| patient            |
+| performance_schema |
+| product            |
+| project            |
+| rest               |
+| sys                |
+| tiger              |
++--------------------+
+
+DATA DEFINATION LANGUAE (DDL): 
+DDL is a type sql command used to define and manage their structure of database.
+1.create, 2.drop, 3.alter, 4.truncate
+
+CREATE : CREATE A NEW TABLE IN DATABASE,
+
+ USE TIGER;
+Database changed
+mysql> SHOW TABLES;
+Empty set (0.00 sec)
+SY : CREATE TABLE TABLE_NAME(COL1 DTYPE, COL2 DTYPE, COL3 DTYPE, COL4 DTYPE,...........);
+EX : CREATE TABLE STUDENT(ID INT, FNAME VARCHAR(10), LNAME VARCHAR(10), COUNTRY VARCHAR(10), MARKS INT, GRADE VARCHAR(5));
+
+
+mysql> CREATE TABLE STUDENT(ID INT, FNAME VARCHAR(10), LNAME VARCHAR(10), COUNTRY VARCHAR(10), MARKS INT, GRADE VARCHAR(10));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> SHOW TABLES;
++-----------------+
+| Tables_in_tiger |
++-----------------+
+| student         |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> DESC STUDENT;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| ID      | int         | YES  |     | NULL    |       |
+| FNAME   | varchar(10) | YES  |     | NULL    |       |
+| LNAME   | varchar(10) | YES  |     | NULL    |       |
+| COUNTRY | varchar(10) | YES  |     | NULL    |       |
+| MARKS   | int         | YES  |     | NULL    |       |
+| GRADE   | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+--------------------------------------------------------------------------------------------
+ALTER WITH ADD : ADD A NEW COLUMN TO  EXISTING TABLE
+
+SY : ALTER TABLE TABLE_NAME ADD COLUMN NEW_COL_NAME DTYPE;
+EX : ALTER TABLE STUDENT ADD COLUMN EMAIL VARCHAR(10);
+
+ DESC STUDENT;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| ID      | int         | YES  |     | NULL    |       |
+| FNAME   | varchar(10) | YES  |     | NULL    |       |
+| LNAME   | varchar(10) | YES  |     | NULL    |       |
+| COUNTRY | varchar(10) | YES  |     | NULL    |       |
+| MARKS   | int         | YES  |     | NULL    |       |
+| GRADE   | varchar(10) | YES  |     | NULL    |       |
+| EMAIL   | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+
+AFTER 
+
+SY : ALTER TABLE TABLE_NAME ADD COLUMN COL_NAME DTYPE AFTER EXIST_COL_NAME;
+EX :  ALTER TABLE STUDENT ADD COLUMN AGE INT AFTER COUNTRY;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC STUDENT;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| ID      | int         | YES  |     | NULL    |       |
+| FNAME   | varchar(10) | YES  |     | NULL    |       |
+| LNAME   | varchar(10) | YES  |     | NULL    |       |
+| COUNTRY | varchar(10) | YES  |     | NULL    |       |
+| AGE     | int         | YES  |     | NULL    |       |
+| MARKS   | int         | YES  |     | NULL    |       |
+| GRADE   | varchar(10) | YES  |     | NULL    |       |
+| EMAIL   | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+
+CREATE A NEW COLUM AT FIRST.
+
+EX : ALTER TABLE STUDENT ADD COLUMN SNO INT FIRST;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC STUDENT;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| SNO     | int         | YES  |     | NULL    |       |
+| ID      | int         | YES  |     | NULL    |       |
+| FNAME   | varchar(10) | YES  |     | NULL    |       |
+| LNAME   | varchar(10) | YES  |     | NULL    |       |
+| COUNTRY | varchar(10) | YES  |     | NULL    |       |
+| AGE     | int         | YES  |     | NULL    |       |
+| MARKS   | int         | YES  |     | NULL    |       |
+| GRADE   | varchar(10) | YES  |     | NULL    |       |
+| EMAIL   | varchar(10) | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+9 rows in set (0.00 sec)
+..........................................................................................
+
+ALTER WITH RENAME : CHANGE COLUMN NAME WITH A NEW NAME
+
+SY : ALTER TABLE TABLE_NAME RENAME COLUMN  OLD_CL TO NEW_COL;
+EX : ALTER TABLE STUDENT RENAME COLUMN COUNTRY TO LOCATION;
+
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| SNO      | int         | YES  |     | NULL    |       |
+| ID       | int         | YES  |     | NULL    |       |
+| FNAME    | varchar(10) | YES  |     | NULL    |       |
+| LNAME    | varchar(10) | YES  |     | NULL    |       |
+| LOCATION | varchar(10) | YES  |     | NULL    |       |
+| AGE      | int         | YES  |     | NULL    |       |
+| MARKS    | int         | YES  |     | NULL    |       |
+| GRADE    | varchar(10) | YES  |     | NULL    |       |
+| EMAIL    | varchar(10) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+--------------------------------------------------------------------------------------------
+
+ALTER WITH MODIFY
+
+SY : ALTER TABLE TABLE_NAME MODIFY COL_NAME DTYPE;
+EX : ALTER TABLE STUDENT MODIFY GRADE INT;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC STUDENT;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| SNO      | int         | YES  |     | NULL    |       |
+| ID       | int         | YES  |     | NULL    |       |
+| FNAME    | varchar(10) | YES  |     | NULL    |       |
+| LNAME    | varchar(10) | YES  |     | NULL    |       |
+| LOCATION | varchar(10) | YES  |     | NULL    |       |
+| AGE      | int         | YES  |     | NULL    |       |
+| MARKS    | int         | YES  |     | NULL    |       |
+| GRADE    | int         | YES  |     | NULL    |       |
+| EMAIL    | varchar(10) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+------------------------------------------------------------------------------------------
+
+ALTER WITH DROP:DROP A SPECIFIED COLUMN FROM THE TABLE.
+
+SY : ALTER TABLE TABLE_NAME DROP COLU_NAME;
+EX : ALTER TABLE STUDENT DROP SNO;
+
+ALTER TABLE STUDENT DROP SNO;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC STUDENT;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| ID       | int         | YES  |     | NULL    |       |
+| FNAME    | varchar(10) | YES  |     | NULL    |       |
+| LNAME    | varchar(10) | YES  |     | NULL    |       |
+| LOCATION | varchar(10) | YES  |     | NULL    |       |
+| AGE      | int         | YES  |     | NULL    |       |
+| MARKS    | int         | YES  |     | NULL    |       |
+| GRADE    | int         | YES  |     | NULL    |       |
+| EMAIL    | varchar(10) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> ALTER TABLE STUDENT DROP GRADE;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
