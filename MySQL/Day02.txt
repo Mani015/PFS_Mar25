@@ -1,0 +1,172 @@
+HOW TO KNOW WHICH DATABASE YOU ARE USING ?
+EX : SELECT DATABASE();
+
+TRUNCATE : TRUNCATE COMMAND USED TO DELETE THE DATA IN TABLE , STILL TABLE STRCUTURE EXIST.
+SY : TRUNCATE TABLE TABLE-NAME;
+EX : TRUNCATE TABLE STU;
+
+select * from stu;
++------+----------+-------+----------+------+-------+-------+
+| ID   | FNAME    | LNAME | LOCATION | AGE  | MARKS | EMAIL |
++------+----------+-------+----------+------+-------+-------+
+|    1 | santhosh | kumar | chennai  |   20 |   100 | xyz   |
+|    2 | suresh   | babu  | mumbai   |   21 |   100 | abc   |
++------+----------+-------+----------+------+-------+-------+
+2 rows in set (0.01 sec)
+
+mysql> truncate table stu;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select * from stu;
+Empty set (0.00 sec)
+
+mysql> describe stu;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| ID       | int         | YES  |     | NULL    |       |
+| FNAME    | varchar(10) | YES  |     | NULL    |       |
+| LNAME    | varchar(10) | YES  |     | NULL    |       |
+| LOCATION | varchar(10) | YES  |     | NULL    |       |
+| AGE      | int         | YES  |     | NULL    |       |
+| MARKS    | int         | YES  |     | NULL    |       |
+| EMAIL    | varchar(10) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+--------------------------------------------------------------------------------------------------------------------------
+
+DROP : IF YOU WANT TO DROP OR DELETE TABLE OR DATABASE FROM YOUR DB SERVER USE DROP COMMAND.
+
+DROPING TABLE : 
+SY : DROP TABLE TABLE_NAME;
+EX : DROP TABLE STU;
+
+DROPING DATABASE.
+
+SY : DROP DATABASE D_NAME;
+EX : DROP DATABASE TIGER;
+------------------------------------------------------------------------------------------------------------------------------
+
+DML(Data Manipulation Language)
+DML COMMANDS IS USED TO MANIPULATE DATA WITH IN A DATABASE.
+
+THERE ARE THREE COMMANDS.
+1. INSERT, 2.UPDATE, 3.DELETE
+
+1.INSERT : INSERT STATEMENT IS USED TO ADD A NEW DATA INTO A TABLE.
+SY : INSERT INTO TABLE_NAME(COL1, COL2,COL3,..............) VALUES (VALUE1, VALUE2, VALUE3.......);
+EX : INSERT INTO IPL(SNO, TEAM_NAME, CAPTAIN, TEAM_SIZE, SPONCER, MENTOR) VALUES(1,'RCB','PATIDAR',11, 'QATAR AIRWAYS','DINESHKARTHIK');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO IPL(SNO, TEAM_NAME, CAPTAIN, TEAM_SIZE, SPONCER, MENTOR) VALUES(2,'SRH','CUMMINS',13, 'REDBULL', 'DANIEL');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO IPL(SNO, TEAM_NAME, CAPTAIN, TEAM_SIZE, SPONCER, MENTOR) VALUES(3,'CSK','DHONI',15,'YOGESWAR', 'STEPHEN FEMLING');
+
+WITHOUT COLUMNS.
+SY : INSERT INTO TABLE_NAME VALUES(V1,V2,V3,.............);
+EX :  INSERT INTO IPL VALUES(4,'PBKS','IYER',13,'PRETTYZINTA','PONTING');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO IPL VALUES(5,'KKR','RAHANE',14,'KHANBHAI','GG'),(6,'MI','PANDYA',12,'AMBANI','MALINGA');
+
+ SELECT * FROM IPL;
++------+-----------+---------+-----------+---------------+-----------------+
+| SNO  | TEAM_NAME | CAPTAIN | TEAM_SIZE | SPONCER       | MENTOR          |
++------+-----------+---------+-----------+---------------+-----------------+
+|    1 | RCB       | PATIDAR |        11 | QATAR AIRWAYS | DINESHKARTHIK   |
+|    2 | SRH       | CUMMINS |        13 | REDBULL       | DANIEL          |
+|    3 | CSK       | DHONI   |        15 | YOGESWAR      | STEPHEN FEMLING |
+|    4 | PBKS      | IYER    |        13 | PRETTYZINTA   | PONTING         |
+|    5 | KKR       | RAHANE  |        14 | KHANBHAI      | GG              |
+|    6 | MI        | PANDYA  |        12 | AMBANI        | MALINGA         |
++------+-----------+---------+-----------+---------------+-----------------+
+-----------------------------------------------------------------------------------------------------------------
+
+UPDATE : MODIFY THE EXISTING DATA IN TABLE USING UPDATE STATEMENT,
+SY : UPDATE TABLE_NAME SET COL= VALUE WHERE COL_NAME = VALUE
+EX :  UPDATE IPL SET TEAM_SIZE = 14  WHERE TEAM_NAME = 'RCB';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM IPL;
++------+-----------+---------+-----------+---------------+-----------------+
+| SNO  | TEAM_NAME | CAPTAIN | TEAM_SIZE | SPONCER       | MENTOR          |
++------+-----------+---------+-----------+---------------+-----------------+
+|    1 | RCB       | PATIDAR |        14 | QATAR AIRWAYS | DINESHKARTHIK   |
+|    2 | SRH       | CUMMINS |        13 | REDBULL       | DANIEL          |
+|    3 | CSK       | DHONI   |        15 | YOGESWAR      | STEPHEN FEMLING |
+|    4 | PBKS      | IYER    |        13 | PRETTYZINTA   | PONTING         |
+|    5 | KKR       | RAHANE  |        14 | KHANBHAI      | GG              |
+|    6 | MI        | PANDYA  |        12 | AMBANI        | MALINGA         |
++------+-----------+---------+-----------+---------------+-----------------+
+
+UPDATE IPL SET SPONCER = 'RELIANCE' WHERE TEAM_NAME = 'mi';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM IPL;
++------+-----------+---------+-----------+---------------+-----------------+
+| SNO  | TEAM_NAME | CAPTAIN | TEAM_SIZE | SPONCER       | MENTOR          |
++------+-----------+---------+-----------+---------------+-----------------+
+|    1 | RCB       | PATIDAR |        14 | QATAR AIRWAYS | DINESHKARTHIK   |
+|    2 | SRH       | CUMMINS |        13 | REDBULL       | DANIEL          |
+|    3 | CSK       | DHONI   |        15 | YOGESWAR      | STEPHEN FEMLING |
+|    4 | PBKS      | IYER    |        13 | PRETTYZINTA   | PONTING         |
+|    5 | KKR       | RAHANE  |        14 | KHANBHAI      | GG              |
+|    6 | MI        | PANDYA  |        12 | RELIANCE      | MALINGA         |
++------+-----------+---------+-----------+---------------+-----------------+
+--------------------------------------------------------------------------------------------------------------
+
+DELETE  : DELEATE STATEMENT IS USED TO DELETE A ROW IN A TABLE.
+SY : DELETE FROM TABLE_NAME  WHERE CONDITION;
+EX : DELETE FROM IPL  WHERE TEAM_NAME = 'CSK';
+Query OK, 1 row affected (0.01 sec)
+
+
+DELETE FROM IPL  WHERE TEAM_NAME = 'KKR';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DELETE FROM IPL  WHERE TEAM_NAME = 'SRH';
+Query OK, 1 row affected (0.01 sec)
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
