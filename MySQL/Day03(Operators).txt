@@ -1,0 +1,141 @@
+Operators : 
+
+create table emp(empid int, fname varchar(30), lname varchar(30),
+ salary int, age int, location varchar(40),gender varchar(20));
+ insert into emp values(1,'joseph','sang',2000,13,'usa','male'),
+(2,'martin','luthor',2500,17,'mexico','male'),(3,'sara','bhai',3400,16,'canada','female'),
+(4,'ron','riyaz',4000,18,'australia','male'),(5,'ramu','reddy',3000,15,'india','male'),(6,'sireesha','naidu',3600,11,'usa','female'),
+(7,'velu','swami',5000,20,'europ','male'),(8,'gandharam','gani',5600,12,'philip','male'),
+(9,'sangitharao','paul',5000,12,'netherlands','male'),
+(10,'akash','naidu',4000,16,'sidney','male'),
+(11,'mark','juker',1000,12,'china','male'),
+(12,'mounika','reddy',6000,12,'uae','female'),
+(13,'mahalaxmi','niadu',4000,13,'usa','female'),
+(14,'yashoda','chowdhary',3000,13,'england','female'),
+(15,'manisha','pandey',2000,13,'southafrica','female');
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+LIMIT : The LIMIT clause is used to specify the number of records to return.
+SY : SELECT * FROM TABLENAME OPERAOTR VALUE:
+EX : SELECT * FROM EMP LIMIT 5;
+EX : SELECT * FROM EMP LIMIT 10;
+-----------------------------------------------------------------------------------
+WHERE  : WHERE FILTERING THE ROWS WHERE SPECIFIED CONDTION
+WHERE CLAUSE (IS USED TO ON ARTHEMATICE OPERATORS,COMAPRISION OPERATORS,LOGICAL)
+SY : SELECT * FROM TABLE_NAME WHERE CONDTION;
+EX : SELECT * FROM EMP WHERE SALARY > 3000;
+
+SELECT * FROM EMP WHERE SALARY > 3000;
+SELECT * FROM EMP WHERE SALARY  < 2000;
+
+WHERE CLAUSE WITH LIMIT OPERTOR;
+SELECT * FROM EMP WHERE SALARY > 3000 LIMIT 4;
+
+[APPLIY GREATERTHAN EQUAL >= , LESS THAN  EQUAL <=,==,NOT EQUAL TO != or <>]
+-----------------------------------------------------------------------------------------------
+LOGICAL OPERATOR:
+
+AND , OR ,NOT
+
+AND  : BOTH ARE TRUE THEN RETURN THE TABLE;
+SY : SELECT * FROM TABLE_EMP WHERE CONDTION1 AND CONDITION2;
+EX : SELECT * FROM EMP WHERE SALARY > 3000 AND SALARY < 6000;
+
+
+SELECT * FROM EMP WHERE SALARY > 3000 OR SALARY < 6000;
+
+
+NOT : NEGOCIATE:
+SELECT * FROM EMP WHERE  FNAME = 'MARK';
+SELECT * FROM EMP WHERE  NOT FNAME = 'MARK';
+-------------------------------------------------------------------------------------------------------------------------------------------------
+NULL VALUES IN THE TABLE 
+
+It is not possible to test for NULL values with comparison operators, such as =, <, or <>.
+
+We will have to use the IS NULL and IS NOT NULL operators instead.
+
+SY : SELECT * FROM TABLE_NAME WHERE COLUMN_NAME IS NULL;
+EX : SELECT * FROM EMP WHERE FNAME IS NULL;
+
+IS NOT NULL : 
+SY : SELECT * FROM TABLE_NAME WHERE COLUMN_NAME IS  NOT NULL;
+EX : SELECT * FROM EMP WHERE FNAME IS  NOT NULL;
+--------------------------------------------------------------------------------------------------------------------
+The MySQL BETWEEN Operator
+The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates.
+
+The BETWEEN operator is inclusive: begin and end values are included.
+
+SY : SELECT * FROM TABLE_NAME WHERE COLUMN_NAME BETWEEN VALUE1 AND VALUE2;
+EX : SELECT * FROM EMP WHERE SALARY BETWEEN 2000 AND 4500;
+
+NOT BETWEEN :
+SY : SELECT  * FROM TABLE_NAME WHERE COLUMN_NAME NOT BETWEEN VALUE1 AND VALUE2;
+EX : SELECT * FROM EMP WHERE SALARY NOT BETWEEN 2000 AND  4500;
+-----------------------------------------------------------------------------------------------------
+The MySQL IN Operator
+The IN operator allows you to specify multiple values in a WHERE clause.
+SY : SELECT * FROM TABLE_NAME WHERE COLUMN_NAME IN(VALUE)
+EX : SELECT * FROM EMP WHERE SALARY IN (2000);
+BUT INSTED OF OR USING IN OPERATOR: The IN operator is a shorthand for multiple OR conditions.
+
+EX : SELECT * FROM EMP WHERE SALARY = 2000 OR SALARY = 2500 OR SALARY = 3000;
+EX : SELECT * FROM EMP WHERE SALARY IN(2000,2500,3000);
+-----------------------------------------------------------------------------------------------------------
+The MySQL LIKE Operator (WILD CARD)
+The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.
+
+There are two wildcards often used in conjunction with the LIKE operator:
+The percent sign (%) represents zero, one, or multiple characters
+The underscore sign (_) represents one, single character
+
+IN THE TABLE WHO'S NAME START WITH A
+
+SY : SELECT * FROM TABLE_NAME WHERE COLUMN_NAME LIKE  'PATTREN';
+EX : SELECT * FROM EMP WHERE FNAME LIKE  'a%';
+EX : SELECT * FROM EMP WHERE LNAME LIKE  'N%';
+..................................................................
+IN THE TABLE WHO'S NAME ENDS WITH SPECIFIED LETTER;
+
+SY : SELECT * FROM EMP WHERE FNAME LIKE  'PATTREN';
+EX : SELECT * FROM EMP WHERE LNAME LIKE  '%Y';
+..............................................................................
+IN THE TABLE WHO'S NAME START AND END WITH SPECIFED PATTREN;
+SY : SELECT * FROM EMP WHERE FNAME LIKE  'PATTREN';
+EX : SELECT * FROM EMP WHERE LNAME LIKE  'A%N';
+.......................................................................
+IN THE TABLE WHO'S NAME MIDDLE SPECIFIED PATTREN
+Finds any values that have "or" in any position
+
+SY: SELECT * FROM TABLE_NAME WHERE COLUMN_NAME LIKE '%M%';
+EX : SELECT * FROM EMP WHERE LOCATION LIKE '%S%';
+....................................................................
+
+Finds any values that start with "a" and are at least 2 characters in length
+SELECT * FROM EMP WHERE FNAME LIKE 'aK_%';
+
+ENDSWITH : 
+
+SELECT * FROM EMP WHERE LNAME LIKE '%_Y';
+---------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
