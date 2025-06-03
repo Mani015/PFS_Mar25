@@ -1,0 +1,67 @@
+Set of operations : there are four , what are they
+
+The MySQL UNION Operator
+The UNION operator is used to combine the result-set of two or more SELECT statements.
+
+Every SELECT statement within UNION must have the same number of columns
+The columns must also have similar data types
+The columns in every SELECT statement must also be in the same order
+table1[a,b,c,e,g,h,i]
+table2[b,c,e,j,d,l,m,k,i]
+
+SY : SELECT COLUMN_NAME FROM TABLE1 UNION SELECT COULMN_NAME FROM TABLE2 ;
+ UNION  = [A,B,C,D,E,G,H,I,J,K,L,M]
+
+-- SELECT * FROM BACKEND; [1,2,3,4,5,6]
+-- SELECT * FROM FRONTEND; [1,3,5,7,8,9]
+SELECT SNO FROM BACKEND UNION SELECT SNO FROM FRONTEND;  [1,2,3,4,5,6,7,8,9]
+
+1.Display the all records from the mutliple tables without duplicate values.
+2.Display the all records from the multiple tables include duplicate.
+----------------------------------------------------------------------------------------------------------
+
+UNION ALL Syntax
+The UNION operator selects only distinct values by default. To allow duplicate values, use UNION ALL:
+
+SY : SELECT column_name(s) FROM table1 UNION ALL SELECT column_name(s) FROM table2;
+EX : SELECT SNO FROM BACKEND UNION ALL SELECT SNO FROM FRONTEND;
+--------------------------------------------------------------------------------------------------------
+
+GROUP BY :  RETURNS  GROUP A ROWS IN A COLUMNS
+The GROUP BY statement groups rows that have the same values into summary rows, like "find the number of customers in each country".
+
+SY : SELECT COLUMN1,COLUMN2 FROM TABLE_NAME GROUP BY COLUMN_NAME;
+EX : SELECT LOCATION,COUNT(LOCATION) FROM EMPLOYEE GROUP BY LOCATION;
+EX : SELECT SALARY,COUNT(*) FROM EMPLOYEE GROUP BY SALARY;
+EX : SELECT DEPID, SUM(SALARY) FROM  EMPLOYEE GROUP BY DEPID;
+EX : SELECT DEPID, AVG(SALARY) FROM  EMPLOYEE GROUP BY DEPID;
+-----------------------------------------------------------------------
+
+The HAVING clause was added to SQL because the WHERE keyword cannot be used with aggregate functions.
+SY : SELECT COL1, COL2 FROM TABLE_NAME GROUP BY COLUMN_NAME HAVING CONDITION;
+EX : SELECT AGE, SUM(SALARY) FROM EMPLOYEE GROUP BY AGE HAVING SUM(SALARY) > 10000;
+EX : SELECT DEPID, AVG(SALARY) FROM EMPLOYEE GROUP BY DEPID HAVING SUM(SALARY) > 5000;
+
+--------------------------------------------------------
+
+WHERE CLAUSE : 
+WHERE  --- > GROUP BY ---> HAVING ----> ORDER BY
+
+
+SELECT AGE, SUM(SALARY) FROM EMPLOYEE WHERE AGE > 25 GROUP BY AGE HAVING SUM(SALARY) > 12000;
+SELECT DEPID, AVG(SALARY) FROM EMPLOYEE WHERE DEPID <> 106 GROUP BY DEPID;
+SELECT DEPID, AVG(SALARY) FROM EMPLOYEE WHERE DEPID <> 106 GROUP BY DEPID HAVING AVG(SALARY) >= 10000;
+
+SELECT DEPID, AVG(SALARY) FROM EMPLOYEE WHERE DEPID < 106 GROUP BY DEPID HAVING AVG(SALARY) >= 10000;
+
+-----------------------------------------------------------------------------
+APPLYING ORDER BY ASC | DESC
+
+SELECT DEPID, AVG(SALARY) FROM EMPLOYEE WHERE DEPID < 106 GROUP BY DEPID HAVING AVG(SALARY) >= 10000 ORDER BY DEPID ;
+
+SELECT DEPID, AVG(SALARY) FROM EMPLOYEE WHERE DEPID < 106 GROUP BY DEPID HAVING AVG(SALARY) >= 10000 ORDER BY DEPID DESC;
+
+
+
+
+
