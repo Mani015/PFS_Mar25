@@ -1,0 +1,512 @@
+
+INNER JOIN : MATCHING ROWS FROM THE TWO TABLES 
+1.COLUMNS
+2.TABLES
+3.CONDITIONS
+
+EXCUTE TABLE1 [PRODUCT]:
+select * from product;
++-----+--------------+---------------+------------------+--------------+
+| PID | PRODUCT_NAME | PRODUCT_PRICE | PRODUCT_QUANTITY | PRODUCT_SELL |
++-----+--------------+---------------+------------------+--------------+
+|   1 | MEDIMIX      |            40 |              200 |           56 |
+|   2 | SANTOOR      |            43 |              500 |           77 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 |
+|   4 | LUX          |            36 |              120 |           12 |
+|   5 | ACNESTAR     |           100 |               20 |           17 |
+|   6 | NO1          |            35 |              200 |           58 |
+|   7 | DETTOL       |            40 |               90 |           67 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 |
+|   9 | PEARS        |            60 |               34 |           28 |
+|  10 | LIFEBOY      |            34 |               36 |           19 |
++-----+--------------+---------------+------------------+--------------+
+
+EXCUTE TABLE 2 [CUSTOMER]
+select * from CUSTOMER;
++-------+---------------+---------------+--------------+
+| CID   | CUSTOMER_NAME | LOCATION      | PRODUCT_SELL |
++-------+---------------+---------------+--------------+
+| 10012 | SIREESHA      | MADANAPALLI   |           34 |
+| 10013 | CHANDRIKA     | RAYACHOTI     |           69 |
+| 10014 | JAGADESWAR    | KADAPA        |           50 |
+| 10015 | RAMU          | MEXICO        |           45 |
+| 10016 | VELU          | TIRUPATI      |           78 |
+| 10017 | GANGADHRAM    | NELLORE       |           86 |
+| 10018 | RAJU          | RAJAMPETA     |           12 |
+| 10019 | BHARATH       | CHENNAI       |           67 |
+| 10020 | DHANA         | GOA           |           19 |
+| 10021 | KARTHIK       | JAMMALAMADUGU |           17 |
+| 10022 | MUNI          | BANGALORE     |           57 |
+| 10023 | VENKATESH     | MUMBAI        |           77 |
+| 10024 | BALAJI        | NOOLIVEDU     |           20 |
+| 10025 | DARLA         | SWIZERLAND    |           40 |
+| 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |
++-------+---------------+---------------+--------------+
+15 rows in set (0.00 sec)
+
+INNERT JOIN / JOIN  : The INNER JOIN keyword selects records that have matching values in both tables.
+SY : SELECT COL1, COL2, COL3 .... FROM TABLE_NAME1 JOIN TABLE_NAME2 ON CONDITION:
+EX : mysql> SELECT PID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_QUANTITY, CID, CUSTOMER_NAME,LOCATION FROM PRODUCT JOIN CUSTOMER ON PRODUCT.PRODUCT_SELL = CUSTOMER.PRODUCT_SELL;
++-----+--------------+---------------+------------------+-------+---------------+---------------+
+| PID | PRODUCT_NAME | PRODUCT_PRICE | PRODUCT_QUANTITY | CID   | CUSTOMER_NAME | LOCATION      |
++-----+--------------+---------------+------------------+-------+---------------+---------------+
+|   3 | MYSORESANDAL |            45 |               89 | 10012 | SIREESHA      | MADANAPALLI   |
+|   8 | CHNADRIKA    |            50 |               30 | 10018 | RAJU          | RAJAMPETA     |
+|   4 | LUX          |            36 |              120 | 10018 | RAJU          | RAJAMPETA     |
+|   7 | DETTOL       |            40 |               90 | 10019 | BHARATH       | CHENNAI       |
+|  10 | LIFEBOY      |            34 |               36 | 10020 | DHANA         | GOA           |
+|   5 | ACNESTAR     |           100 |               20 | 10021 | KARTHIK       | JAMMALAMADUGU |
+|   2 | SANTOOR      |            43 |              500 | 10023 | VENKATESH     | MUMBAI        |
+|   7 | DETTOL       |            40 |               90 | 10026 | MAHALAXMI     | RAVULAPALEM   |
++-----+--------------+---------------+------------------+-------+---------------+---------------+
+
+
+INNER JOIN : 
+SELECT T1.PID, T1.PRODUCT_NAME, T1.PRODUCT_PRICE, T1.PRODUCT_QUANTITY, T2.CID, T2.CUSTOMER_NAME,T2.LOCATION FROM PRODUCT AS T1 INNER JOIN CUSTOMER AS T2 ON T1.PRODUCT_SELL = T2.PRODUCT_SELL;
++-----+--------------+---------------+------------------+-------+---------------+---------------+
+| PID | PRODUCT_NAME | PRODUCT_PRICE | PRODUCT_QUANTITY | CID   | CUSTOMER_NAME | LOCATION      |
++-----+--------------+---------------+------------------+-------+---------------+---------------+
+|   3 | MYSORESANDAL |            45 |               89 | 10012 | SIREESHA      | MADANAPALLI   |
+|   8 | CHNADRIKA    |            50 |               30 | 10018 | RAJU          | RAJAMPETA     |
+|   4 | LUX          |            36 |              120 | 10018 | RAJU          | RAJAMPETA     |
+|   7 | DETTOL       |            40 |               90 | 10019 | BHARATH       | CHENNAI       |
+|  10 | LIFEBOY      |            34 |               36 | 10020 | DHANA         | GOA           |
+|   5 | ACNESTAR     |           100 |               20 | 10021 | KARTHIK       | JAMMALAMADUGU |
+|   2 | SANTOOR      |            43 |              500 | 10023 | VENKATESH     | MUMBAI        |
+|   7 | DETTOL       |            40 |               90 | 10026 | MAHALAXMI     | RAVULAPALEM   |
++-----+--------------+---------------+------------------+-------+---------------+---------------+
+8 rows in set (0.00 sec)
+
+=======================================================================================================================================================
+
+RIGHT JOIN : The RIGHT JOIN keyword returns all records from the right table (table2), and the matching records (if any) from the left table (table1).
+
+SY : SELECT COL1 , COL2, COL3 FROM TABLE1 RIGHT JOIN TABLE2 ON LEFT TABLE = RIGHT TABLE;
+
+EX : SELECT T1.PID, T1.PRODUCT_NAME, T1.PRODUCT_PRICE, T1.PRODUCT_QUANTITY, T2.CID, T2.CUSTOMER_NAME,T2.LOCATION FROM PRODUCT AS T1 RIGHT JOIN CUSTOMER AS T2 ON T1.PRODUCT_SELL = T2.PRODUCT_SELL;
++------+--------------+---------------+------------------+-------+---------------+---------------+
+| PID  | PRODUCT_NAME | PRODUCT_PRICE | PRODUCT_QUANTITY | CID   | CUSTOMER_NAME | LOCATION      |
++------+--------------+---------------+------------------+-------+---------------+---------------+
+|    3 | MYSORESANDAL |            45 |               89 | 10012 | SIREESHA      | MADANAPALLI   |
+| NULL | NULL         |          NULL |             NULL | 10013 | CHANDRIKA     | RAYACHOTI     |
+| NULL | NULL         |          NULL |             NULL | 10014 | JAGADESWAR    | KADAPA        |
+| NULL | NULL         |          NULL |             NULL | 10015 | RAMU          | MEXICO        |
+| NULL | NULL         |          NULL |             NULL | 10016 | VELU          | TIRUPATI      |
+| NULL | NULL         |          NULL |             NULL | 10017 | GANGADHRAM    | NELLORE       |
+|    8 | CHNADRIKA    |            50 |               30 | 10018 | RAJU          | RAJAMPETA     |
+|    4 | LUX          |            36 |              120 | 10018 | RAJU          | RAJAMPETA     |
+|    7 | DETTOL       |            40 |               90 | 10019 | BHARATH       | CHENNAI       |
+|   10 | LIFEBOY      |            34 |               36 | 10020 | DHANA         | GOA           |
+|    5 | ACNESTAR     |           100 |               20 | 10021 | KARTHIK       | JAMMALAMADUGU |
+| NULL | NULL         |          NULL |             NULL | 10022 | MUNI          | BANGALORE     |
+|    2 | SANTOOR      |            43 |              500 | 10023 | VENKATESH     | MUMBAI        |
+| NULL | NULL         |          NULL |             NULL | 10024 | BALAJI        | NOOLIVEDU     |
+| NULL | NULL         |          NULL |             NULL | 10025 | DARLA         | SWIZERLAND    |
+|    7 | DETTOL       |            40 |               90 | 10026 | MAHALAXMI     | RAVULAPALEM   |
++------+--------------+---------------+------------------+-------+---------------+---------------+
+16 rows in set (0.00 sec)
+
+
+=====================================================================================================================
+
+LEFT JOIN : 
+SY : SY : SELECT COL1 , COL2, COL3 FROM TABLE1 LEFT JOIN TABLE2 ON LEFT TABLE = RIGHT TABLE;
+EX : SELECT T1.PID, T1.PRODUCT_NAME, T1.PRODUCT_PRICE, T1.PRODUCT_QUANTITY, T2.CID, T2.CUSTOMER_NAME,T2.LOCATION FROM PRODUCT AS T1 LEFT JOIN CUSTOMER AS T2 ON T1.PRODUCT_SELL = T2.PRODUCT_SELL;
++-----+--------------+---------------+------------------+-------+---------------+---------------+
+| PID | PRODUCT_NAME | PRODUCT_PRICE | PRODUCT_QUANTITY | CID   | CUSTOMER_NAME | LOCATION      |
++-----+--------------+---------------+------------------+-------+---------------+---------------+
+|   1 | MEDIMIX      |            40 |              200 |  NULL | NULL          | NULL          |
+|   2 | SANTOOR      |            43 |              500 | 10023 | VENKATESH     | MUMBAI        |
+|   3 | MYSORESANDAL |            45 |               89 | 10012 | SIREESHA      | MADANAPALLI   |
+|   4 | LUX          |            36 |              120 | 10018 | RAJU          | RAJAMPETA     |
+|   5 | ACNESTAR     |           100 |               20 | 10021 | KARTHIK       | JAMMALAMADUGU |
+|   6 | NO1          |            35 |              200 |  NULL | NULL          | NULL          |
+|   7 | DETTOL       |            40 |               90 | 10026 | MAHALAXMI     | RAVULAPALEM   |
+|   7 | DETTOL       |            40 |               90 | 10019 | BHARATH       | CHENNAI       |
+|   8 | CHNADRIKA    |            50 |               30 | 10018 | RAJU          | RAJAMPETA     |
+|   9 | PEARS        |            60 |               34 |  NULL | NULL          | NULL          |
+|  10 | LIFEBOY      |            34 |               36 | 10020 | DHANA         | GOA           |
++-----+--------------+---------------+------------------+-------+---------------+---------------+
+11 rows in set (0.00 sec)
+
+================================================================================================================
+
+SQL CROSS JOIN Keyword
+The CROSS JOIN keyword returns all records from both tables (table1 and table2).
+
+SY : SELECT * FROM TABLE1 CROSS JOIN TABLE2;
+EX :  SELECT * FROM PRODUCT CROSS JOIN CUSTOMER;
++-----+--------------+---------------+------------------+--------------+-------+---------------+---------------+--------------+
+| PID | PRODUCT_NAME | PRODUCT_PRICE | PRODUCT_QUANTITY | PRODUCT_SELL | CID   | CUSTOMER_NAME | LOCATION      | PRODUCT_SELL |
++-----+--------------+---------------+------------------+--------------+-------+---------------+---------------+--------------+
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10012 | SIREESHA      | MADANAPALLI   |           34 |
+|   9 | PEARS        |            60 |               34 |           28 | 10012 | SIREESHA      | MADANAPALLI   |           34 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10012 | SIREESHA      | MADANAPALLI   |           34 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10012 | SIREESHA      | MADANAPALLI   |           34 |
+|   6 | NO1          |            35 |              200 |           58 | 10012 | SIREESHA      | MADANAPALLI   |           34 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10012 | SIREESHA      | MADANAPALLI   |           34 |
+|   4 | LUX          |            36 |              120 |           12 | 10012 | SIREESHA      | MADANAPALLI   |           34 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10012 | SIREESHA      | MADANAPALLI   |           34 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10012 | SIREESHA      | MADANAPALLI   |           34 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10012 | SIREESHA      | MADANAPALLI   |           34 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10013 | CHANDRIKA     | RAYACHOTI     |           69 |
+|   9 | PEARS        |            60 |               34 |           28 | 10013 | CHANDRIKA     | RAYACHOTI     |           69 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10013 | CHANDRIKA     | RAYACHOTI     |           69 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10013 | CHANDRIKA     | RAYACHOTI     |           69 |
+|   6 | NO1          |            35 |              200 |           58 | 10013 | CHANDRIKA     | RAYACHOTI     |           69 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10013 | CHANDRIKA     | RAYACHOTI     |           69 |
+|   4 | LUX          |            36 |              120 |           12 | 10013 | CHANDRIKA     | RAYACHOTI     |           69 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10013 | CHANDRIKA     | RAYACHOTI     |           69 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10013 | CHANDRIKA     | RAYACHOTI     |           69 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10013 | CHANDRIKA     | RAYACHOTI     |           69 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10014 | JAGADESWAR    | KADAPA        |           50 |
+|   9 | PEARS        |            60 |               34 |           28 | 10014 | JAGADESWAR    | KADAPA        |           50 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10014 | JAGADESWAR    | KADAPA        |           50 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10014 | JAGADESWAR    | KADAPA        |           50 |
+|   6 | NO1          |            35 |              200 |           58 | 10014 | JAGADESWAR    | KADAPA        |           50 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10014 | JAGADESWAR    | KADAPA        |           50 |
+|   4 | LUX          |            36 |              120 |           12 | 10014 | JAGADESWAR    | KADAPA        |           50 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10014 | JAGADESWAR    | KADAPA        |           50 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10014 | JAGADESWAR    | KADAPA        |           50 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10014 | JAGADESWAR    | KADAPA        |           50 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10015 | RAMU          | MEXICO        |           45 |
+|   9 | PEARS        |            60 |               34 |           28 | 10015 | RAMU          | MEXICO        |           45 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10015 | RAMU          | MEXICO        |           45 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10015 | RAMU          | MEXICO        |           45 |
+|   6 | NO1          |            35 |              200 |           58 | 10015 | RAMU          | MEXICO        |           45 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10015 | RAMU          | MEXICO        |           45 |
+|   4 | LUX          |            36 |              120 |           12 | 10015 | RAMU          | MEXICO        |           45 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10015 | RAMU          | MEXICO        |           45 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10015 | RAMU          | MEXICO        |           45 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10015 | RAMU          | MEXICO        |           45 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10016 | VELU          | TIRUPATI      |           78 |
+|   9 | PEARS        |            60 |               34 |           28 | 10016 | VELU          | TIRUPATI      |           78 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10016 | VELU          | TIRUPATI      |           78 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10016 | VELU          | TIRUPATI      |           78 |
+|   6 | NO1          |            35 |              200 |           58 | 10016 | VELU          | TIRUPATI      |           78 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10016 | VELU          | TIRUPATI      |           78 |
+|   4 | LUX          |            36 |              120 |           12 | 10016 | VELU          | TIRUPATI      |           78 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10016 | VELU          | TIRUPATI      |           78 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10016 | VELU          | TIRUPATI      |           78 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10016 | VELU          | TIRUPATI      |           78 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10017 | GANGADHRAM    | NELLORE       |           86 |
+|   9 | PEARS        |            60 |               34 |           28 | 10017 | GANGADHRAM    | NELLORE       |           86 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10017 | GANGADHRAM    | NELLORE       |           86 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10017 | GANGADHRAM    | NELLORE       |           86 |
+|   6 | NO1          |            35 |              200 |           58 | 10017 | GANGADHRAM    | NELLORE       |           86 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10017 | GANGADHRAM    | NELLORE       |           86 |
+|   4 | LUX          |            36 |              120 |           12 | 10017 | GANGADHRAM    | NELLORE       |           86 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10017 | GANGADHRAM    | NELLORE       |           86 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10017 | GANGADHRAM    | NELLORE       |           86 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10017 | GANGADHRAM    | NELLORE       |           86 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10018 | RAJU          | RAJAMPETA     |           12 |
+|   9 | PEARS        |            60 |               34 |           28 | 10018 | RAJU          | RAJAMPETA     |           12 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10018 | RAJU          | RAJAMPETA     |           12 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10018 | RAJU          | RAJAMPETA     |           12 |
+|   6 | NO1          |            35 |              200 |           58 | 10018 | RAJU          | RAJAMPETA     |           12 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10018 | RAJU          | RAJAMPETA     |           12 |
+|   4 | LUX          |            36 |              120 |           12 | 10018 | RAJU          | RAJAMPETA     |           12 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10018 | RAJU          | RAJAMPETA     |           12 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10018 | RAJU          | RAJAMPETA     |           12 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10018 | RAJU          | RAJAMPETA     |           12 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10019 | BHARATH       | CHENNAI       |           67 |
+|   9 | PEARS        |            60 |               34 |           28 | 10019 | BHARATH       | CHENNAI       |           67 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10019 | BHARATH       | CHENNAI       |           67 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10019 | BHARATH       | CHENNAI       |           67 |
+|   6 | NO1          |            35 |              200 |           58 | 10019 | BHARATH       | CHENNAI       |           67 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10019 | BHARATH       | CHENNAI       |           67 |
+|   4 | LUX          |            36 |              120 |           12 | 10019 | BHARATH       | CHENNAI       |           67 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10019 | BHARATH       | CHENNAI       |           67 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10019 | BHARATH       | CHENNAI       |           67 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10019 | BHARATH       | CHENNAI       |           67 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10020 | DHANA         | GOA           |           19 |
+|   9 | PEARS        |            60 |               34 |           28 | 10020 | DHANA         | GOA           |           19 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10020 | DHANA         | GOA           |           19 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10020 | DHANA         | GOA           |           19 |
+|   6 | NO1          |            35 |              200 |           58 | 10020 | DHANA         | GOA           |           19 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10020 | DHANA         | GOA           |           19 |
+|   4 | LUX          |            36 |              120 |           12 | 10020 | DHANA         | GOA           |           19 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10020 | DHANA         | GOA           |           19 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10020 | DHANA         | GOA           |           19 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10020 | DHANA         | GOA           |           19 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10021 | KARTHIK       | JAMMALAMADUGU |           17 |
+|   9 | PEARS        |            60 |               34 |           28 | 10021 | KARTHIK       | JAMMALAMADUGU |           17 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10021 | KARTHIK       | JAMMALAMADUGU |           17 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10021 | KARTHIK       | JAMMALAMADUGU |           17 |
+|   6 | NO1          |            35 |              200 |           58 | 10021 | KARTHIK       | JAMMALAMADUGU |           17 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10021 | KARTHIK       | JAMMALAMADUGU |           17 |
+|   4 | LUX          |            36 |              120 |           12 | 10021 | KARTHIK       | JAMMALAMADUGU |           17 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10021 | KARTHIK       | JAMMALAMADUGU |           17 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10021 | KARTHIK       | JAMMALAMADUGU |           17 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10021 | KARTHIK       | JAMMALAMADUGU |           17 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10022 | MUNI          | BANGALORE     |           57 |
+|   9 | PEARS        |            60 |               34 |           28 | 10022 | MUNI          | BANGALORE     |           57 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10022 | MUNI          | BANGALORE     |           57 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10022 | MUNI          | BANGALORE     |           57 |
+|   6 | NO1          |            35 |              200 |           58 | 10022 | MUNI          | BANGALORE     |           57 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10022 | MUNI          | BANGALORE     |           57 |
+|   4 | LUX          |            36 |              120 |           12 | 10022 | MUNI          | BANGALORE     |           57 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10022 | MUNI          | BANGALORE     |           57 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10022 | MUNI          | BANGALORE     |           57 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10022 | MUNI          | BANGALORE     |           57 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10023 | VENKATESH     | MUMBAI        |           77 |
+|   9 | PEARS        |            60 |               34 |           28 | 10023 | VENKATESH     | MUMBAI        |           77 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10023 | VENKATESH     | MUMBAI        |           77 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10023 | VENKATESH     | MUMBAI        |           77 |
+|   6 | NO1          |            35 |              200 |           58 | 10023 | VENKATESH     | MUMBAI        |           77 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10023 | VENKATESH     | MUMBAI        |           77 |
+|   4 | LUX          |            36 |              120 |           12 | 10023 | VENKATESH     | MUMBAI        |           77 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10023 | VENKATESH     | MUMBAI        |           77 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10023 | VENKATESH     | MUMBAI        |           77 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10023 | VENKATESH     | MUMBAI        |           77 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10024 | BALAJI        | NOOLIVEDU     |           20 |
+|   9 | PEARS        |            60 |               34 |           28 | 10024 | BALAJI        | NOOLIVEDU     |           20 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10024 | BALAJI        | NOOLIVEDU     |           20 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10024 | BALAJI        | NOOLIVEDU     |           20 |
+|   6 | NO1          |            35 |              200 |           58 | 10024 | BALAJI        | NOOLIVEDU     |           20 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10024 | BALAJI        | NOOLIVEDU     |           20 |
+|   4 | LUX          |            36 |              120 |           12 | 10024 | BALAJI        | NOOLIVEDU     |           20 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10024 | BALAJI        | NOOLIVEDU     |           20 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10024 | BALAJI        | NOOLIVEDU     |           20 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10024 | BALAJI        | NOOLIVEDU     |           20 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10025 | DARLA         | SWIZERLAND    |           40 |
+|   9 | PEARS        |            60 |               34 |           28 | 10025 | DARLA         | SWIZERLAND    |           40 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10025 | DARLA         | SWIZERLAND    |           40 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10025 | DARLA         | SWIZERLAND    |           40 |
+|   6 | NO1          |            35 |              200 |           58 | 10025 | DARLA         | SWIZERLAND    |           40 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10025 | DARLA         | SWIZERLAND    |           40 |
+|   4 | LUX          |            36 |              120 |           12 | 10025 | DARLA         | SWIZERLAND    |           40 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10025 | DARLA         | SWIZERLAND    |           40 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10025 | DARLA         | SWIZERLAND    |           40 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10025 | DARLA         | SWIZERLAND    |           40 |
+|  10 | LIFEBOY      |            34 |               36 |           19 | 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |
+|   9 | PEARS        |            60 |               34 |           28 | 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |
+|   8 | CHNADRIKA    |            50 |               30 |           12 | 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |
+|   7 | DETTOL       |            40 |               90 |           67 | 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |
+|   6 | NO1          |            35 |              200 |           58 | 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |
+|   5 | ACNESTAR     |           100 |               20 |           17 | 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |
+|   4 | LUX          |            36 |              120 |           12 | 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |
+|   3 | MYSORESANDAL |            45 |               89 |           34 | 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |
+|   2 | SANTOOR      |            43 |              500 |           77 | 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |
+|   1 | MEDIMIX      |            40 |              200 |           56 | 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |
++-----+--------------+---------------+------------------+--------------+-------+---------------+---------------+--------------+
+150 rows in set (0.00 sec)
+
+
+
+ SELECT * FROM CUSTOMER CROSS JOIN PRODUCT;
++-------+---------------+---------------+--------------+-----+--------------+---------------+------------------+--------------+
+| CID   | CUSTOMER_NAME | LOCATION      | PRODUCT_SELL | PID | PRODUCT_NAME | PRODUCT_PRICE | PRODUCT_QUANTITY | PRODUCT_SELL |
++-------+---------------+---------------+--------------+-----+--------------+---------------+------------------+--------------+
+| 10012 | SIREESHA      | MADANAPALLI   |           34 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10012 | SIREESHA      | MADANAPALLI   |           34 |   9 | PEARS        |            60 |               34 |           28 |
+| 10012 | SIREESHA      | MADANAPALLI   |           34 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10012 | SIREESHA      | MADANAPALLI   |           34 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10012 | SIREESHA      | MADANAPALLI   |           34 |   6 | NO1          |            35 |              200 |           58 |
+| 10012 | SIREESHA      | MADANAPALLI   |           34 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10012 | SIREESHA      | MADANAPALLI   |           34 |   4 | LUX          |            36 |              120 |           12 |
+| 10012 | SIREESHA      | MADANAPALLI   |           34 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10012 | SIREESHA      | MADANAPALLI   |           34 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10012 | SIREESHA      | MADANAPALLI   |           34 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10013 | CHANDRIKA     | RAYACHOTI     |           69 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10013 | CHANDRIKA     | RAYACHOTI     |           69 |   9 | PEARS        |            60 |               34 |           28 |
+| 10013 | CHANDRIKA     | RAYACHOTI     |           69 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10013 | CHANDRIKA     | RAYACHOTI     |           69 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10013 | CHANDRIKA     | RAYACHOTI     |           69 |   6 | NO1          |            35 |              200 |           58 |
+| 10013 | CHANDRIKA     | RAYACHOTI     |           69 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10013 | CHANDRIKA     | RAYACHOTI     |           69 |   4 | LUX          |            36 |              120 |           12 |
+| 10013 | CHANDRIKA     | RAYACHOTI     |           69 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10013 | CHANDRIKA     | RAYACHOTI     |           69 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10013 | CHANDRIKA     | RAYACHOTI     |           69 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10014 | JAGADESWAR    | KADAPA        |           50 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10014 | JAGADESWAR    | KADAPA        |           50 |   9 | PEARS        |            60 |               34 |           28 |
+| 10014 | JAGADESWAR    | KADAPA        |           50 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10014 | JAGADESWAR    | KADAPA        |           50 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10014 | JAGADESWAR    | KADAPA        |           50 |   6 | NO1          |            35 |              200 |           58 |
+| 10014 | JAGADESWAR    | KADAPA        |           50 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10014 | JAGADESWAR    | KADAPA        |           50 |   4 | LUX          |            36 |              120 |           12 |
+| 10014 | JAGADESWAR    | KADAPA        |           50 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10014 | JAGADESWAR    | KADAPA        |           50 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10014 | JAGADESWAR    | KADAPA        |           50 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10015 | RAMU          | MEXICO        |           45 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10015 | RAMU          | MEXICO        |           45 |   9 | PEARS        |            60 |               34 |           28 |
+| 10015 | RAMU          | MEXICO        |           45 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10015 | RAMU          | MEXICO        |           45 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10015 | RAMU          | MEXICO        |           45 |   6 | NO1          |            35 |              200 |           58 |
+| 10015 | RAMU          | MEXICO        |           45 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10015 | RAMU          | MEXICO        |           45 |   4 | LUX          |            36 |              120 |           12 |
+| 10015 | RAMU          | MEXICO        |           45 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10015 | RAMU          | MEXICO        |           45 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10015 | RAMU          | MEXICO        |           45 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10016 | VELU          | TIRUPATI      |           78 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10016 | VELU          | TIRUPATI      |           78 |   9 | PEARS        |            60 |               34 |           28 |
+| 10016 | VELU          | TIRUPATI      |           78 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10016 | VELU          | TIRUPATI      |           78 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10016 | VELU          | TIRUPATI      |           78 |   6 | NO1          |            35 |              200 |           58 |
+| 10016 | VELU          | TIRUPATI      |           78 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10016 | VELU          | TIRUPATI      |           78 |   4 | LUX          |            36 |              120 |           12 |
+| 10016 | VELU          | TIRUPATI      |           78 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10016 | VELU          | TIRUPATI      |           78 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10016 | VELU          | TIRUPATI      |           78 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10017 | GANGADHRAM    | NELLORE       |           86 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10017 | GANGADHRAM    | NELLORE       |           86 |   9 | PEARS        |            60 |               34 |           28 |
+| 10017 | GANGADHRAM    | NELLORE       |           86 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10017 | GANGADHRAM    | NELLORE       |           86 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10017 | GANGADHRAM    | NELLORE       |           86 |   6 | NO1          |            35 |              200 |           58 |
+| 10017 | GANGADHRAM    | NELLORE       |           86 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10017 | GANGADHRAM    | NELLORE       |           86 |   4 | LUX          |            36 |              120 |           12 |
+| 10017 | GANGADHRAM    | NELLORE       |           86 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10017 | GANGADHRAM    | NELLORE       |           86 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10017 | GANGADHRAM    | NELLORE       |           86 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10018 | RAJU          | RAJAMPETA     |           12 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10018 | RAJU          | RAJAMPETA     |           12 |   9 | PEARS        |            60 |               34 |           28 |
+| 10018 | RAJU          | RAJAMPETA     |           12 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10018 | RAJU          | RAJAMPETA     |           12 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10018 | RAJU          | RAJAMPETA     |           12 |   6 | NO1          |            35 |              200 |           58 |
+| 10018 | RAJU          | RAJAMPETA     |           12 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10018 | RAJU          | RAJAMPETA     |           12 |   4 | LUX          |            36 |              120 |           12 |
+| 10018 | RAJU          | RAJAMPETA     |           12 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10018 | RAJU          | RAJAMPETA     |           12 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10018 | RAJU          | RAJAMPETA     |           12 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10019 | BHARATH       | CHENNAI       |           67 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10019 | BHARATH       | CHENNAI       |           67 |   9 | PEARS        |            60 |               34 |           28 |
+| 10019 | BHARATH       | CHENNAI       |           67 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10019 | BHARATH       | CHENNAI       |           67 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10019 | BHARATH       | CHENNAI       |           67 |   6 | NO1          |            35 |              200 |           58 |
+| 10019 | BHARATH       | CHENNAI       |           67 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10019 | BHARATH       | CHENNAI       |           67 |   4 | LUX          |            36 |              120 |           12 |
+| 10019 | BHARATH       | CHENNAI       |           67 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10019 | BHARATH       | CHENNAI       |           67 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10019 | BHARATH       | CHENNAI       |           67 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10020 | DHANA         | GOA           |           19 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10020 | DHANA         | GOA           |           19 |   9 | PEARS        |            60 |               34 |           28 |
+| 10020 | DHANA         | GOA           |           19 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10020 | DHANA         | GOA           |           19 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10020 | DHANA         | GOA           |           19 |   6 | NO1          |            35 |              200 |           58 |
+| 10020 | DHANA         | GOA           |           19 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10020 | DHANA         | GOA           |           19 |   4 | LUX          |            36 |              120 |           12 |
+| 10020 | DHANA         | GOA           |           19 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10020 | DHANA         | GOA           |           19 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10020 | DHANA         | GOA           |           19 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10021 | KARTHIK       | JAMMALAMADUGU |           17 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10021 | KARTHIK       | JAMMALAMADUGU |           17 |   9 | PEARS        |            60 |               34 |           28 |
+| 10021 | KARTHIK       | JAMMALAMADUGU |           17 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10021 | KARTHIK       | JAMMALAMADUGU |           17 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10021 | KARTHIK       | JAMMALAMADUGU |           17 |   6 | NO1          |            35 |              200 |           58 |
+| 10021 | KARTHIK       | JAMMALAMADUGU |           17 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10021 | KARTHIK       | JAMMALAMADUGU |           17 |   4 | LUX          |            36 |              120 |           12 |
+| 10021 | KARTHIK       | JAMMALAMADUGU |           17 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10021 | KARTHIK       | JAMMALAMADUGU |           17 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10021 | KARTHIK       | JAMMALAMADUGU |           17 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10022 | MUNI          | BANGALORE     |           57 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10022 | MUNI          | BANGALORE     |           57 |   9 | PEARS        |            60 |               34 |           28 |
+| 10022 | MUNI          | BANGALORE     |           57 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10022 | MUNI          | BANGALORE     |           57 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10022 | MUNI          | BANGALORE     |           57 |   6 | NO1          |            35 |              200 |           58 |
+| 10022 | MUNI          | BANGALORE     |           57 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10022 | MUNI          | BANGALORE     |           57 |   4 | LUX          |            36 |              120 |           12 |
+| 10022 | MUNI          | BANGALORE     |           57 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10022 | MUNI          | BANGALORE     |           57 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10022 | MUNI          | BANGALORE     |           57 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10023 | VENKATESH     | MUMBAI        |           77 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10023 | VENKATESH     | MUMBAI        |           77 |   9 | PEARS        |            60 |               34 |           28 |
+| 10023 | VENKATESH     | MUMBAI        |           77 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10023 | VENKATESH     | MUMBAI        |           77 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10023 | VENKATESH     | MUMBAI        |           77 |   6 | NO1          |            35 |              200 |           58 |
+| 10023 | VENKATESH     | MUMBAI        |           77 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10023 | VENKATESH     | MUMBAI        |           77 |   4 | LUX          |            36 |              120 |           12 |
+| 10023 | VENKATESH     | MUMBAI        |           77 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10023 | VENKATESH     | MUMBAI        |           77 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10023 | VENKATESH     | MUMBAI        |           77 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10024 | BALAJI        | NOOLIVEDU     |           20 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10024 | BALAJI        | NOOLIVEDU     |           20 |   9 | PEARS        |            60 |               34 |           28 |
+| 10024 | BALAJI        | NOOLIVEDU     |           20 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10024 | BALAJI        | NOOLIVEDU     |           20 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10024 | BALAJI        | NOOLIVEDU     |           20 |   6 | NO1          |            35 |              200 |           58 |
+| 10024 | BALAJI        | NOOLIVEDU     |           20 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10024 | BALAJI        | NOOLIVEDU     |           20 |   4 | LUX          |            36 |              120 |           12 |
+| 10024 | BALAJI        | NOOLIVEDU     |           20 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10024 | BALAJI        | NOOLIVEDU     |           20 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10024 | BALAJI        | NOOLIVEDU     |           20 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10025 | DARLA         | SWIZERLAND    |           40 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10025 | DARLA         | SWIZERLAND    |           40 |   9 | PEARS        |            60 |               34 |           28 |
+| 10025 | DARLA         | SWIZERLAND    |           40 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10025 | DARLA         | SWIZERLAND    |           40 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10025 | DARLA         | SWIZERLAND    |           40 |   6 | NO1          |            35 |              200 |           58 |
+| 10025 | DARLA         | SWIZERLAND    |           40 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10025 | DARLA         | SWIZERLAND    |           40 |   4 | LUX          |            36 |              120 |           12 |
+| 10025 | DARLA         | SWIZERLAND    |           40 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10025 | DARLA         | SWIZERLAND    |           40 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10025 | DARLA         | SWIZERLAND    |           40 |   1 | MEDIMIX      |            40 |              200 |           56 |
+| 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |  10 | LIFEBOY      |            34 |               36 |           19 |
+| 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |   9 | PEARS        |            60 |               34 |           28 |
+| 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |   8 | CHNADRIKA    |            50 |               30 |           12 |
+| 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |   7 | DETTOL       |            40 |               90 |           67 |
+| 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |   6 | NO1          |            35 |              200 |           58 |
+| 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |   5 | ACNESTAR     |           100 |               20 |           17 |
+| 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |   4 | LUX          |            36 |              120 |           12 |
+| 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |   3 | MYSORESANDAL |            45 |               89 |           34 |
+| 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |   2 | SANTOOR      |            43 |              500 |           77 |
+| 10026 | MAHALAXMI     | RAVULAPALEM   |           67 |   1 | MEDIMIX      |            40 |              200 |           56 |
++-------+---------------+---------------+--------------+-----+--------------+---------------+------------------+--------------+
+150 rows in set (0.00 sec)
+
+mysql>
+
+-----------------------------------------------------------------------------------------
+SELF JOIN :
+SELECT A.PRODUCT_NAME  , B.PRODUCT_PRICE  FROM PRODUCT A, PRODUCT B
+WHERE A.PID = B.PID AND A.PRODUCT_QUANTITY = B.PRODUCT_QUANTITY 
+
+SELECT A.PRODUCT_NAME  , B.PRODUCT_PRICE  FROM PRODUCT A, PRODUCT B
+WHERE A.PID = B.PID AND A.PRODUCT_PRICE = B.PRODUCT_PRICE
+ 
+SELECT A.PRODUCT_NAME  , B.PRODUCT_PRICE  FROM PRODUCT A, PRODUCT B
+WHERE A.PID = B.PID AND A.PRODUCT_QUANTITY = B.PRODUCT_QUANTITY ORDER BY PRODUCT_NAME ASC; 
+
+SELECT A.PRODUCT_NAME  , B.PRODUCT_PRICE  FROM PRODUCT A, PRODUCT B
+WHERE A.PID = B.PID AND A.PRODUCT_QUANTITY = B.PRODUCT_QUANTITY ORDER BY PRODUCT_NAME DESC; 
+
+
+
+
+
+INSERT ALL RECORDS TO A SPECIFIED COLUMN (AT A TIME);
+
+
+UPDATE CUSTOMER set QUANTITY = CASE SNO WHEN 1 THEN '10'
+WHEN 2 THEN '4' WHEN 3 THEN '5' WHEN 4 THEN '20' WHEN 5 THEN '15' WHEN 6 THEN  '8' WHEN 7 THEN '11' 
+WHEN 8 THEN '15'  ELSE '17' END;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
