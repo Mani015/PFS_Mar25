@@ -1,0 +1,50 @@
+Views : Views are database objects (logical object)doesn't have memory location.
+A view is virtual table based on the result set of an sql statments.
+A view contains rows and columns just like a real table;
+
+Orginal table : select * from table_name;
+Duplicate table : create view view_name as (select col1,col2 from Table_name);
+
+EX : CREATE VIEW  EMP_VIEW AS (SELECT EMPID, EMPNAME, SALARY FROM EMPLOYEE);
+
+DROP A VIEW:
+SY : DROP VIEW VIEW_NAME;
+EX : DROP VIEW EMP_VIEW;
+-----------------------------------------------------------------------------------------------------------
+
+INDEX : TO IMPROVE PERFORMANCE OF THE DATABASE.
+	THERE ARE TWO INDEXS
+	1. CLUSTER INDEX 
+		Primary key : In MySQL , the primary key is a clustered index by default. if you create a primary key on a columns, MySQl will create a clustered index for that column.
+
+	2. NON-CLUSTERED INDEX : 
+		In MySQL, you can create a non- clustered index on columns that are frequently queried to speed up search operations.
+
+1.INDEXES ARE USED TO RETREVIE DATA FROM THE DATABASES VERY FAST.
+2.THE USER CANNOT SEE THE INDEXES, THEY ARE JUST USED TO SPEED OF SEARCHES/ QUIRES.
+
+if you want to see how many records search
+example : EXPLAIN(SELECT * FROM TABLENAME WHERE CONDITION);
+AFTER CREATE CLUSTED 
+EX : CREATE INDEX INDEX_NAME ON TABLE_NAME(COL_NAME1, COL_NAME2);
+AFTER DO WITH EXPLAIN METHOD
+
+
+
+DROP INDEXES : 
+DROP INDEX INDEX_NAME ON TABLE_NAME;
+
+SY : ALTER TABLE TABLE_NAME DROP INDEX iNDEX_nAME;
+EX :  ALTER TABLE EMPLOYEE DROP INDEX IDX_SALARY; 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Why key length is required?
+TEXT and BLOB columns can store large amounts of data.
+
+Indexing the entire content would be inefficient.
+
+So, MySQL needs you to limit the number of characters (e.g., first 10, 20, 100 chars).
+
+CREATE INDEX k1 ON mah(`First Name`(100));
+
+
+
