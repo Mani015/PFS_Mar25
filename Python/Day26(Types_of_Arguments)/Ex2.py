@@ -15,13 +15,13 @@
 # y is : 20
 # sum is : 50
 
-def profile(Name='Jyothsna',age=21,location='Bangalore'):
+def profile(Name='Nithin',age=21,location='Bangalore'):
 	print(f'Name is : {Name}')
 	print(f'Age is : {age}')
 	print(f'location is : {location}')
 # profile()
 
-# Name is : Jyothsna
+# Name is : Nithin
 # Age is : 21
 # location is : Bangalore
 

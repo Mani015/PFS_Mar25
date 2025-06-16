@@ -1,5 +1,5 @@
 """
-URL configuration for project3 project.
+URL configuration for project4 project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app3 import views
+from app4 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('tem/',views.Basic_template),
-    path('datetime/',views.Current_date)
+    path('person1/',views.Profile1),
+    path('person2/',views.Profile2),
+    path('person3/',views.Profile3),
+    path('',views.Index)
+
 ]
+

@@ -1,0 +1,27 @@
+1.Views
+2.settings
+3.urls
+----------------------------
+DTL allows developers to separate the visual presentation of a site from the underlying code.
+Syntax:
+DTL uses tags ({% ... %}) for logic and variables ({{ ... }}) to display data.
+Context:
+Templates are rendered with a context, which is a dictionary of data passed from the Django view.
+{% if condition %}
+{% endif %}
+{% else %}
+{% for i in iterable %}
+{% endfor %}
+{% csrf_token %}
+{% load static %}
+
+
+
+how to load images on to UI page
+SETTINGS : STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static')
+]
+
+{% load static %}
+
+

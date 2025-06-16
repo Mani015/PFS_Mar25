@@ -1,10 +1,24 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<div align="center">
+    <h2>You are in Profile page : </h2>
+     <ol>
+    <li>PName : {{Name}}</li>
+    <li>Page : {{Age}}</li>
+    <li>Psalary : {{Salary}}</li>
+    </ol>
+</div>
+
+<br>
+<img src="{% static 'emp.jpg' %}" height="300px" width="200px">
+<!-- 'static'. Did you forget to register or load this tag?-->
+
+<a href="/">Home</a>
 </body>
 </html>
