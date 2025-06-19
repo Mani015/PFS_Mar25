@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Applying New voter Card</h2>
+<form method="get" >
+    <table>
+    {{voter.as_table}}
+        {% csrf_token %}
+        </table>
+    <br><br>
+    <input type="submit" name="" value="Continue">
+</form>
+
+<!--Cross-Site Request Forgery-->
+<!--We have three types of tables-->
+<!--{{form.as_table}}-->
+<!--{{form.as_p}}-->
+<!--{{form.as_ul}}-->
+
+</body>
+</html>
