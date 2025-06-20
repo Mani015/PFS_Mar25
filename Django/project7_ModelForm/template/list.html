@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3>Apparao Driving & vallet Parking </h3>
+{% if vehicle %}
+<table>
+    <thead>
+    <th>Sno</th>
+    <th>VehicleNumber</th>
+    <th>VehicleName</th>
+    <th>VehicleWheels</th>
+    <th>VehicleToken</th>
+    <th>Parking_Date</th>
+    </thead>
+    {% for i in vehicle %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.VehicleNum}}</td>
+        <td>{{i.VehicleName}}</td>
+        <td>{{i.VehicleWheels}}</td>
+        <td>{{i.VehicleToken}}</td>
+        <td>{{i.Parking_Date}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h3>Sorry your Vehicle Doesn't Exist here......</h3>
+{% endif %}
+<br><br>
+<a href="/">Back</a>
+</body>
+</html>

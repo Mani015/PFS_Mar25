@@ -1,0 +1,17 @@
+1.project creation
+
+2.models
+3.settings
+4.template/list.html
+5.migrations
+6.urls
+-------------------------------------------
+
+create Form
+1.forms
+2.views
+3.form.html
+4.views
+5.index
+6.urls
+
