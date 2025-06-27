@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Welcome to student Details Page : </h2>
+{% if stu_list %}
+<table border="3px" style="background-color : orange">
+  <thead>
+  <th>Fname</th>
+  <th>Lname</th>
+  <th>Marks</th>
+  <th>Location</th>
+  <th>Join_Date</th>
+  </thead>
+  {% for stu in stu_list %}
+  <tr>
+    <td>{{stu.Fname}}</td>
+    <td>{{stu.Lname}}</td>
+    <td>{{stu.Marks}}</td>
+    <td>{{stu.Location}}</td>
+    <td>{{stu.Join_Date}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<h3>No Student Found Data....</h3>
+{% endif %}
+</body>
+</html>

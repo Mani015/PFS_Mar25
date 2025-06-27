@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Successfully Completed </h2>
+<table>
+{% for i in vehicle %}
+  <tr>
+    <td>{{i.id}}</td>
+    <td>{{i.VehicleNum}}</td>
+    <td>{{i.VehicleName}}</td>
+    <td>{{i.VehicleToken}}</td>
+  </tr>
+  {% endfor %}
+  </table>
+</body>
+</html>
