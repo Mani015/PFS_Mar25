@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Update Exist Employee Records.....</h3>
+<form method="post">
+  {% csrf_token %}
+  <table>
+    {{emp_id.as_table}}
+      <ol>
+          <li><input type="text" name="EFname" value="{{emp_id.EFname}}"></li>
+          <li><input type="text" name="ELname" value="{{emp_id.ELname}}"></li>
+          <li><input type="number" name="ESalary" value="{{emp_id.ESalary}}"></li>
+      </ol>
+  </table>
+    <br>
+    <input type="submit" value="Update">
+</form>
+</body>
+</html>
