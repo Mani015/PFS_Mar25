@@ -1,5 +1,5 @@
 """
-URL configuration for project2 project.
+URL configuration for project9_CBV project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -15,20 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-# from app2 import views as v1
-# from app1 import views as v2
-
+from django.urls import path
+from app9 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path("view1/",v1.AppView),
-    # path('view2/',v2.New_app)
-    path('main1/',include('app1.urls')),
-    path('main2/',include('app2.urls'))
-
-
-
+    path('',views.Invite.as_view())
 ]
-
-
-
