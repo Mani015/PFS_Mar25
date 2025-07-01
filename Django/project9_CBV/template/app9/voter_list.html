@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Welcome to Voter List Page</h2>
+{% if voter_list %}
+<table border="3px">
+    <thead>
+    <th>Sno</th>
+    <th>VoterId</th>
+    <th>VoterName</th>
+    <th>VoterAge</th>
+    <th>VoterAddress</th>
+    </thead>
+    {% for i in voter_list %}
+    <tr>
+        <td><a href="/{{i.id}}">{{i.id}}</a></td>
+        <td>{{i.VoterId}}</td>
+        <td>{{i.VoterName}}</td>
+        <td>{{i.VoterAge}}</td>
+        <td>{{i.VoterAddress}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else  %}
+<h2>No voter Id's</h2>
+{% endif %}
+</body>
+</html>

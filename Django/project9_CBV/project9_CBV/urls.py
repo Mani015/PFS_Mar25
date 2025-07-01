@@ -19,5 +19,8 @@ from django.urls import path
 from app9 import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.Invite.as_view())
+    # path('',views.Invite.as_view())
+    path('',views.VoterListView.as_view()),
+    path('<int:pk>/',views.VoterDetailView.as_view())
+
 ]

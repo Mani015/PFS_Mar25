@@ -1,0 +1,14 @@
+Class Based Views
+When the compared with function based views is less code in class based views
+LISTVIEW
+1.model
+2.views
+3.settings
+4.migrations
+5.urls
+
+
+DETAIL VIEW
+1.views
+2.html
+3.urls
