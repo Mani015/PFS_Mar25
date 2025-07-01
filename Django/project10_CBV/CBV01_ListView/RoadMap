@@ -1,0 +1,10 @@
+
+Class based views
+When the compared with function based views is less code in class based views.
+
+1.models
+2.views
+3.settings
+4.template\App1\product_list.html
+5.migrations
+

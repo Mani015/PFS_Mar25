@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+    <h3>See the product details </h3>
+    <ol>
+        <li>Name : {{product.Pname}}</li>
+        <li>price : {{product.Pprice}}</li>
+        <li>color : {{product.Pcolor}}</li>
+        <li>Quantity : {{product.Quantity}}</li>
+        <li><h4><a href="/update/{{product.id}}">Update</a></h4></li>
+        <li><h4><a href="/delete/{{product.id}}">Delete</a></h4></li>
+    </ol>
+
+</div>
+<a href="/">Home</a>
+
+</body>
+</html>

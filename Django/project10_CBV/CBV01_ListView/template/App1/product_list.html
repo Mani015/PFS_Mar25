@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Welcome to Online shopping cart</h1>
+{% if product_list %}
+<table border="3px">
+    <thead>
+    <th>ProductName</th>
+    <th>ProductPrice</th>
+    <th>ProductColor</th>
+    <th>ProductQuantity</th>
+    </thead>
+    {% for pro in product_list %}
+    <tr>
+        <td>{{pro.Pname}}</td>
+        <td>{{pro.Pprice}}</td>
+        <td>{{pro.Pcolor}}</td>
+        <td>{{pro.Quantity}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h3>Currently no product Available in Online Shopping cart</h3>
+{% endif %}
+<!--<a href="/form">add Cars</a>-->
+</body>
+</html>

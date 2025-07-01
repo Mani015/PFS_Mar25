@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'App1/base.html'%}
+{% block body_block %}
+<body>
+<div align="center">
+    <form method="post">
+        <table>
+        {{form.as_table}}
+            {% csrf_token %}
+        </table>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+
+
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,29 @@
+
+Class based views
+When the compared with function based views is less code in class based views.
+
+1.models
+2.views
+3.settings
+4.template\App1\product_list.html
+5.migrations
+6.urls
+------------------------------------------
+DetailView
+
+1.views
+2.template/product_detail.html
+3.urls
+-----------------------------------------------------
+
+Create view
+1.views
+2.template/product_form.html
+3.urls
+No URL to redirect to.  Either provide a url or define a get_absolute_url method on the Model.
+4.models
+5.urls
+
+
+
+
