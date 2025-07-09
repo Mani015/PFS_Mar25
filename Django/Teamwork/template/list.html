@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if stu %}
+<table border="2px">
+    <thead>
+    <th>id</th>
+    <th>First_name</th>
+    <th>Last_name</th>
+    <th>Roll_number</th>
+    <th>Age</th>
+    <th>Grade</th>
+
+    </thead>
+    {% for i in stu %}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.Fname}}</td>
+        <td>{{i.Lname}}</td>
+        <td>{{i.RollNo}}</td>
+        <td>{{i.Age}}</td>
+        <td>{{i.Grade}}</td>
+
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h2> No team records found</h2>
+
+{% endif %}
+
+</body>
+</html>

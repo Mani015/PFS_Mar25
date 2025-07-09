@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Are sure want to delete {{vote.VoterId}} ?</h3>
+<form method="post">
+  {% csrf_token %}
+  <br/>
+  <input type="submit" value="confirm">
+  <br/>
+  <a href="/">Cancel</a>
+</form>
+</body>
+</html>

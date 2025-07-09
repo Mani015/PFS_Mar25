@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'app9/base.html' %}
+{% block body_block %}
 <h2>Welcome to Voter List Page</h2>
 {% if voter_list %}
-<table border="3px">
+<div align="center">
+<table border="3px"  style="color : purple; background-color : pink">
     <thead>
     <th>Sno</th>
     <th>VoterId</th>
@@ -19,8 +16,8 @@
     <tr>
         <td><a href="/{{i.id}}">{{i.id}}</a></td>
         <td>{{i.VoterId}}</td>
-        <td>{{i.VoterName}}</td>
-        <td>{{i.VoterAge}}</td>
+        <td>{{i.VoterName | slice:"::-1"}}</td>
+        <td>{{i.VoterAge | add:'1'}}</td>
         <td>{{i.VoterAddress}}</td>
     </tr>
     {% endfor %}
@@ -28,5 +25,20 @@
 {% else  %}
 <h2>No voter Id's</h2>
 {% endif %}
-</body>
-</html>
+<br/><br/>
+<a href="/create">AddVoter</a>
+
+</div>
+{% endblock %}
+
+
+<!--https://docs.djangoproject.com/en/5.0/ref/templates/builtins/-->
+<!--filter¶
+Filters the contents of the block through one or more filters. Multiple filters can be specified with pipes and filters can have arguments, just as in variable syntax.-->
+
+<!--<td>{{i.id}}</td>
+        <td>{{i.ProjectName | slice:"::-1"}}</td>
+        <td>{{i.ProjectCost}}</td>
+        <td>{{i.ProjectEngineer | slice:":2"}}</td>
+        <td>{{i.StartDate | date:"d-m-Y"}}</td>
+        <td>{{i.EndDate | timesince}}</td>-->

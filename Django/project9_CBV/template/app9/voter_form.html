@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'app9/base.html' %}
+{% block body_block %}
+<h3>Applying to Andhra Pradesh Election Department VoterId </h3>
+<form method="post">
+    <table>
+        {{form.as_table}}
+        {% csrf_token %}
+    </table>
+
+    <br><br>
+    <input type="submit" value="Save">
+
+</form>
+<br/><br/>
+{% endblock %}
+

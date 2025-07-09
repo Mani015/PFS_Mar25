@@ -1,5 +1,5 @@
 """
-URL configuration for project9_CBV project.
+URL configuration for Teamwork project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -16,15 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app9 import views
+from TApp import views
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('',views.Invite.as_view())
-    path('',views.VoterListView.as_view(),name = 'vote2'),
-    path('<int:pk>/',views.VoterDetailView.as_view(),name = 'vote1'), # #Reverse for 'vote1' not found. 'vote1' is not a valid view function or pattern name.
-    path('create/',views.VoterCreateView.as_view()),
-    path('update/<int:pk>/',views.VoterUpdateView.as_view()),
-    path('delete/<int:pk>/',views.VoterDeleteView.as_view())
-
+    path('list/',views.Team_list),
+    path('form/', views.TForm)
 ]
-
