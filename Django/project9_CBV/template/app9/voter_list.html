@@ -16,8 +16,8 @@
     <tr>
         <td><a href="/{{i.id}}">{{i.id}}</a></td>
         <td>{{i.VoterId}}</td>
-        <td>{{i.VoterName | slice:"::-1"}}</td>
-        <td>{{i.VoterAge | add:'1'}}</td>
+        <td>{{i.VoterName | slice:"::"}}</td>
+        <td>{{i.VoterAge | add:'0'}}</td>
         <td>{{i.VoterAddress}}</td>
     </tr>
     {% endfor %}
