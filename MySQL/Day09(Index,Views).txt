@@ -1,8 +1,8 @@
 Views : Views are database objects (logical object)doesn't have memory location.
-A view is virtual table based on the result set of an sql statments.
+A view is virtual table based on the result set of an sql statements.
 A view contains rows and columns just like a real table;
 
-Orginal table : select * from table_name;
+Original table : select * from table_name;
 Duplicate table : create view view_name as (select col1,col2 from Table_name);
 
 EX : CREATE VIEW  EMP_VIEW AS (SELECT EMPID, EMPNAME, SALARY FROM EMPLOYEE);
